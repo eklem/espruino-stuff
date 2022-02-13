@@ -1,12 +1,27 @@
 var  on = false;
-setInterval(function() {
-  on = !on;
-  LED2.write(on);
-  LED1.write(!on);
-  if (on === true) {
-    analogWrite(A5, 1);
-  }
+console.log('this should only happen once');
+
+setWatch(function() {
   if (on === false) {
-    analogWrite(A5, 0.4);
+    on = true;
+    lightOn();
+  } else {
+    on = false;
+    lightOff();
   }
-}, 3000);
+}, B5, { repeat: true, debounce : 50, edge: "rising" });
+
+var lightOn = function() {
+    lightIntensity = [1, 0.02, 0.02];
+    analogWrite(A5, lightIntensity[0]);
+    analogWrite(A6, lightIntensity[1]);
+    analogWrite(A7, lightIntensity[2]);
+    console.log('light on!');
+};
+
+var lightOff = function() {
+  analogWrite(A5, 0);
+  analogWrite(A6, 0);
+  analogWrite(A7, 0);
+  console.log('light off!');
+};
