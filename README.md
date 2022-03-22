@@ -1,4 +1,4 @@
-# Espruino projects
+# Espruino stuff
 
 Mostly small and simple projects to learn a bit more about hardware hacking and Espruino.
 
